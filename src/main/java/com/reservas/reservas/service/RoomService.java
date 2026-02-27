@@ -2,6 +2,7 @@ package com.reservas.reservas.service;
 
 import com.reservas.reservas.entity.Room;
 import com.reservas.reservas.repository.RoomRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,7 +30,10 @@ public class RoomService {
     }
 
     //Delete
-    public void deleteRoom(Long id) {
-        roomRepository.deleteById(id);
+    @Transactional
+    public void deleteRoom(String name) {
+        roomRepository.findByName(name)
+                .orElseThrow(() -> new RuntimeException("Sala no trobada: " + name));
+        roomRepository.deleteByName(name);
     }
 }

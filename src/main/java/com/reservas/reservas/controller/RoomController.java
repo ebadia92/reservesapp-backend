@@ -6,10 +6,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/rooms")
-@CrossOrigin(origins = "http://localhost:3000")
 public class RoomController {
     private RoomService roomService;
 
@@ -30,10 +28,10 @@ public class RoomController {
         return roomService.createRoom(room);
     }
 
-    //Eliminamos sals
-    @DeleteMapping("/{id}")
-    public void deleteRooms(@PathVariable Long id){
-        roomService.deleteRoom(id);
+    //Eliminamos sala
+    @DeleteMapping("/{name}")
+    public void deleteRooms(@PathVariable String name){
+        roomService.deleteRoom(name);
     }
 
 }

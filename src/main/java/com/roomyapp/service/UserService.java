@@ -1,5 +1,6 @@
 package com.roomyapp.service;
 
+import com.roomyapp.dto.RegisterRequest;
 import com.roomyapp.entity.User;
 import com.roomyapp.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,7 +18,6 @@ public class UserService {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
-
     //Login
     public User login(String email, String rawPassword) {
 

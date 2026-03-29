@@ -22,7 +22,8 @@ public class JwtUtil {
                 .setSubject(email)
                 .claim("role",role)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis()+86400000))
+                //.setExpiration(new Date(System.currentTimeMillis()+86400000)) duración de un día
+                .setExpiration(new Date(System.currentTimeMillis()+604800000)) //token duracion 7 dias
                 .signWith(key)
                 .compact();
     }

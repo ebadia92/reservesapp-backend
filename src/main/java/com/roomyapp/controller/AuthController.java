@@ -69,9 +69,4 @@ public class AuthController {
         );
     }
 
-    //registro
-    @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody RegisterRequest request){
-        return ResponseEntity.ok(userService.register(request));
-    }
 }

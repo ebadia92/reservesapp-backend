@@ -6,6 +6,7 @@ import com.roomyapp.dto.LoginResponse;
 import com.roomyapp.dto.RegisterRequest;
 import com.roomyapp.entity.User;
 import com.roomyapp.service.UserService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -66,5 +67,11 @@ public class AuthController {
                 user.getRole().name(), //.name() convierte a String y el frontend recibe ADMIN o EMPLOYEE, porque Role es enum
                 token
         );
+    }
+
+    //registro
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody RegisterRequest request){
+        return ResponseEntity.ok(userService.register(request));
     }
 }

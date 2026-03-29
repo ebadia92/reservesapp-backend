@@ -28,6 +28,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
+                .cors(Customizer.withDefaults()) //implementacion
                 .csrf(csrf -> csrf.disable()) // necesario para Postman
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/login").permitAll() //  ESTA ES LA CLAVE
